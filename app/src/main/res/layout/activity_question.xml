@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="questionViewModel"
+            type="cat.udl.tidic.amd.trivial.viewmodels.QuestionViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.QuestionActivity">
+
+
+    <TextView
+        android:id="@+id/categoryTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:text="@{questionViewModel.isQuestionLoaded().category.toString()}"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/questionTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@{questionViewModel.isQuestionLoaded().question}"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryTV" />
+
+    <TextView
+        android:id="@+id/pickAnswerTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="#C7EFC9"
+        android:text="*** Pick the answer ***"
+        android:textAlignment="center"
+        android:textColor="#00838F"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTV" />
+
+    <Button
+        android:id="@+id/answer1Bt"
+        android:layout_width="297dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="24dp"
+        android:text="@{questionViewModel.isQuestionLoaded().answers.get(0).answer}"
+        android:onClick="@{() -> questionViewModel.onClickedAt(questionViewModel.isQuestionLoaded().answers.get(0))}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pickAnswerTV" />
+
+    <Button
+        android:id="@+id/answer2Bt"
+        android:layout_width="297dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="8dp"
+        android:text="@{questionViewModel.isQuestionLoaded().answers.get(1).answer}"
+        android:onClick="@{() -> questionViewModel.onClickedAt(questionViewModel.isQuestionLoaded().answers.get(1))}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answer1Bt" />
+
+    <Button
+        android:id="@+id/answer3Bt"
+        android:layout_width="297dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="8dp"
+        android:text="@{questionViewModel.isQuestionLoaded().answers.get(2).answer}"
+        android:onClick="@{() -> questionViewModel.onClickedAt(questionViewModel.isQuestionLoaded().answers.get(2))}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answer2Bt" />
+
+    <Button
+        android:id="@+id/answer4Bt"
+        android:layout_width="297dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="8dp"
+        android:text="@{questionViewModel.isQuestionLoaded().answers.get(3).answer}"
+        android:onClick="@{() -> questionViewModel.onClickedAt(questionViewModel.isQuestionLoaded().answers.get(3))}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answer3Bt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
